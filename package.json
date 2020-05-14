@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require ts-node/register ./spec/*.spec.ts",
-    "start": "node ./out/index.js",
+    "start": "node ./out/main.js",
     "build": "cd src; tsc; cd ..",
-    "serve": "ts-node src/index.ts",
+    "serve": "ts-node src/main.ts",
     "lint": "eslint"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/LarsBremen/template_node_ts#readme",
   "dependencies": {
+    "robotjs": "^0.6.0",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
