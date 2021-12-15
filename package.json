@@ -22,18 +22,18 @@
   "homepage": "https://github.com/LarsBremen/template_node_ts#readme",
   "dependencies": {
     "robotjs": "^0.6.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
-    "@types/node": "^13.13.5",
-    "@typescript-eslint/eslint-plugin": "^2.32.0",
-    "@typescript-eslint/parser": "^2.32.0",
-    "eslint": "^7.0.0",
-    "eslint-config-google": "^0.14.0",
-    "ts-node": "^8.10.1",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.13.35",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.2.0",
-    "mocha": "^7.1.2",
-    "@types/chai": "^4.2.10",
-    "@types/mocha": "^7.0.2"
+    "eslint": "^7.15.0",
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^7.2.0",
+    "ts-node": "^8.10.2"
   }
 }

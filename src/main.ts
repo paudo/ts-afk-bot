@@ -1,22 +1,15 @@
-// const robot = require('robotjs');
-import robot from 'robotjs';
+import {Worker} from 'worker_threads';
 
-const delay = 30000;
-const move = 100;
+let stdin = process.openStdin();
+process.stdin.setRawMode(true);
 
-robot.setMouseDelay(delay);
-let lastPosition = robot.getMousePos();
+console.log('Press q to quit the program');
+stdin.resume();
 
-while (true) {
-    for (let ele of [move, -move]) {
-        const tmp = robot.getMousePos()
-        if (lastPosition.x === tmp.x && lastPosition.y === tmp.y) {
-            const mouse = robot.getMousePos();
-            lastPosition = {x: mouse.x, y: mouse.y + ele};
-            robot.moveMouse(mouse.x, mouse.y + ele);
-        } else {
-            lastPosition = robot.getMousePos();
-            robot.moveMouse(robot.getMousePos().x, robot.getMousePos().y);
-        }
-    }
-}
+let worker = new Worker('./out/mouseMovement.js');
+stdin.on('data', function (keydata) {
+  if (keydata == 'q') {
+    console.log('Terminating Worker.');
+    worker.terminate().then(process.exit(0));
+  }
+});
