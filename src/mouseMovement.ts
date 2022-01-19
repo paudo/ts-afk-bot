@@ -1,21 +1,21 @@
-import robot from 'robotjs';
+// @ts-ignore
+import {mouse, left, right, up, down, straightTo, centerOf, Region, sleep} from '@nut-tree/nut-js';
 
-const delay = 30000;
-const move = 100;
+async function square() {
+  await mouse.move(right(move));
+  await mouse.move(down(move));
+  await mouse.move(left(move));
+  await mouse.move(up(move));
+}
 
-robot.setMouseDelay(delay);
-let lastPosition = robot.getMousePos();
+const [delay, move] = [30000, 100];
+let lastPosition = await mouse.getPosition();
 
 while (true) {
-    for (let ele of [move, -move]) {
-        const tmp = robot.getMousePos()
-        if (lastPosition.x === tmp.x && lastPosition.y === tmp.y) {
-            const mouse = robot.getMousePos();
-            lastPosition = {x: mouse.x, y: mouse.y + ele};
-            robot.moveMouse(mouse.x, mouse.y + ele);
-        } else {
-            lastPosition = robot.getMousePos();
-            robot.moveMouse(robot.getMousePos().x, robot.getMousePos().y);
-        }
-    }
+  const tmpPosition = await mouse.getPosition();
+  if (lastPosition.x === tmpPosition.x && lastPosition.y === tmpPosition.y) {
+    await square();
+  }
+  lastPosition = await mouse.getPosition();
+  await sleep(delay);
 }
