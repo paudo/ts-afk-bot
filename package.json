@@ -24,6 +24,7 @@
   "dependencies": {
     "@nut-tree/nut-js": "^2.0.0",
     "robotjs": "^0.6.0",
+    "ts-worker": "^1.0.3",
     "typescript": "^3.9.7"
   },
   "devDependencies": {
