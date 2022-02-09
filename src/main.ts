@@ -1,4 +1,5 @@
 import {Worker} from 'worker_threads';
+import chalk from 'chalk';
 
 let stdin = process.openStdin();
 process.stdin.setRawMode(true);
@@ -12,21 +13,21 @@ const workerPath = './out/mouseMovement.js';
 let worker = new Worker(workerPath);
 stdin.on('data', function (keydata) {
   if (keydata == 'q') {
-    console.log('Terminating Worker.');
+    console.log('\nTerminating Worker.');
     worker.terminate().then(process.exit(0));
   } else if (keydata == 'p') {
     if (worker.threadId > 0) {
       worker.terminate().then();
-      write('Paused mouse movement.');
+      write(chalk.green('Paused mouse movement.'));
     } else {
-      write('Mouse movement already paused.');
+      write(chalk.red('Mouse movement already paused.'));
     }
   } else if (keydata == 'r') {
     if (worker.threadId < 1) {
       worker = new Worker(workerPath);
-      write('Restarted mouse movement.');
+      write(chalk.green('Restarted mouse movement.'));
     } else {
-      write('Mouse movement is not paused.');
+      write(chalk.red('Mouse movement is not paused.'));
     }
   }
 });
