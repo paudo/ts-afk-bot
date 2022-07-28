@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/paudo/ts-afk-bot#readme",
   "dependencies": {
-    "@nut-tree/nut-js": "^2.0.0",
+    "@nut-tree/nut-js": "^1.7.0",
     "chalk": "^4.1.2",
     "typescript": "^4.5.5"
   },
