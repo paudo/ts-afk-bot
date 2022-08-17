@@ -1,7 +1,7 @@
 import {Worker} from 'worker_threads';
 import chalk from 'chalk';
 
-let stdin = process.openStdin();
+const stdin = process.openStdin();
 process.stdin.setRawMode(true);
 
 console.log('Press:\tq to quit the program\n' +
@@ -11,7 +11,7 @@ stdin.resume();
 const workerPath = './out/mouseMovement.js';
 
 let worker = new Worker(workerPath);
-stdin.on('data', function (keydata) {
+stdin.on('data', (keydata) => {
   if (keydata == 'q') {
     console.log('\nTerminating Worker.');
     worker.terminate().then(process.exit(0));
@@ -32,9 +32,12 @@ stdin.on('data', function (keydata) {
   }
 });
 
-function write(message: string) {
+/**
+ * Move cursor to beginning of line and delete all content, then write message
+ * @param {string} message Message that should be written
+ */
+function write(message: string): void {
   process.stdout.cursorTo(0);
   process.stdout.clearLine(0);
   process.stdout.write(message);
-
 }
